@@ -22,7 +22,7 @@ class DeepgramService:
     """
     Manages a single Deepgram AsyncLive STT connection for one call.
 
-    Converts Twilio's mulaw/8000 audio to linear16 PCM before forwarding —
+    Converts telephone μ-law/8000 audio to linear16 PCM before forwarding —
     Deepgram does not accept mulaw directly on the streaming endpoint.
     Only fires transcript_callback on is_final=True results.
     """

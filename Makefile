@@ -1,4 +1,4 @@
-.PHONY: install redis-up redis-down dev prod lint
+.PHONY: install redis-up redis-down dev prod lint up down
 
 install:
 	pip install -r requirements.txt
@@ -17,3 +17,9 @@ prod:
 
 lint:
 	ruff check app/
+
+up:
+	./start.sh
+
+down:
+	docker compose down

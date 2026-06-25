@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import get_settings
-from app.routes import calls, appointments, health
+from app.routes import appointments, health, telnyx
 from app.services.call_session import close_redis
 from app.utils.logger import configure_logging, get_logger
 
@@ -52,7 +52,7 @@ def create_app() -> FastAPI:
 
     app = FastAPI(
         title=f"{settings.business_name} — AI Voice Receptionist",
-        description="Inbound call handler powered by Claude + Twilio",
+        description="Inbound call handler powered by Claude + Telnyx",
         version="1.0.0",
         docs_url="/docs" if settings.debug else None,
         redoc_url=None,
@@ -67,7 +67,7 @@ def create_app() -> FastAPI:
     )
 
     app.include_router(health.router)
-    app.include_router(calls.router)
+    app.include_router(telnyx.router)
     app.include_router(appointments.router)
 
     return app

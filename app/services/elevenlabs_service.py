@@ -17,7 +17,7 @@ class ElevenLabsService:
     """
     Streams TTS audio from ElevenLabs and yields base64-encoded mulaw chunks.
 
-    Output format ulaw_8000 is Twilio-native — no re-encoding step required.
+    Output format ulaw_8000 is telephone-native (G.711 μ-law) — Telnyx accepts it directly.
     Chunks are yielded as they arrive so the caller hears audio immediately.
     """
 
@@ -29,7 +29,7 @@ class ElevenLabsService:
     async def synthesize(self, text: str) -> AsyncGenerator[str, None]:
         """
         Yields base64-encoded ulaw_8000 audio chunks suitable for sending
-        directly into a Twilio media stream WebSocket message.
+        directly into a Telnyx media stream WebSocket message.
         """
         try:
             logger.info("elevenlabs_synthesizing", chars=len(text))

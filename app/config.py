@@ -12,18 +12,14 @@ class Settings(BaseSettings):
         env_file=".env",
         env_file_encoding="utf-8",
         case_sensitive=False,
+        extra="ignore",
     )
 
     # Server
     app_host: str = "0.0.0.0"
     app_port: int = 8000
     debug: bool = False
-    base_url: str = Field(..., description="Public URL Twilio posts webhooks to")
-
-    # Twilio
-    twilio_account_sid: str
-    twilio_auth_token: str
-    twilio_phone_number: str
+    base_url: str = Field(..., description="Public base URL that Telnyx posts webhooks to")
 
     # Anthropic
     anthropic_api_key: str
@@ -53,8 +49,11 @@ class Settings(BaseSettings):
     elevenlabs_api_key: str
     elevenlabs_voice_id: str
 
-    # Warm transfer target
-    twilio_human_agent_number: str
+    # Telnyx
+    telnyx_api_key: str = ""
+    telnyx_phone_number: str = ""
+    telnyx_public_key: str = ""  # Ed25519 public key for webhook signature verification
+    telnyx_human_agent_number: str = ""
 
     # AI provider selection
     ai_provider: str = "claude"    # "claude" | "openai"

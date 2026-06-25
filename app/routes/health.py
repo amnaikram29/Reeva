@@ -62,6 +62,6 @@ async def health_check():
             "business": settings.business_name,
             "business_open": open_now,
             "next_open_day": None if open_now else next_open_day(),
-            "twilio_number": settings.twilio_phone_number,
+            "phone_number": settings.telnyx_phone_number,
         },
     )

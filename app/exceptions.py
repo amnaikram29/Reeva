@@ -9,8 +9,8 @@ class ElevenLabsError(Exception):
     """Raised when ElevenLabs TTS synthesis fails."""
 
 
-class TwilioError(Exception):
-    """Raised when a Twilio REST API call fails."""
+class TelnyxError(Exception):
+    """Raised when a Telnyx REST API call fails."""
 
 
 class ClaudeError(Exception):
