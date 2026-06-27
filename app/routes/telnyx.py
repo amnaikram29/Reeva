@@ -10,7 +10,7 @@ from fastapi import APIRouter, Request, Response, WebSocket, WebSocketDisconnect
 from app.config import get_settings
 from app.exceptions import ClaudeError, DeepgramError, ElevenLabsError, TelnyxError
 from app.services import telnyx_service
-from app.services.ai_agent import process_turn
+from app.agent import process_turn
 from app.services.appointment_service import list_appointments
 from app.services.call_session import (
     create_session,

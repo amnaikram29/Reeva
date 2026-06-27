@@ -25,7 +25,7 @@ async def lifespan(app: FastAPI):
     )
 
     # Force provider instantiation at startup — bad API key fails here, not on first call
-    from app.services.ai_agent import get_ai_provider
+    from app.agent import get_ai_provider
     get_ai_provider()
     logger.info("ai_provider_ready", provider=get_settings().ai_provider)
 
