@@ -31,13 +31,14 @@ services:
 
   ngrok:
     image: ngrok/ngrok:latest
-    command: "http app:8000 --log=stdout"
+    command: ["http", "app:8000", "--log=stdout"]
     environment:
       NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN}
     ports:
       - "4040:4040"
     depends_on:
-      - app
+      app:
+        condition: service_healthy
     restart: unless-stopped
 
 volumes:
